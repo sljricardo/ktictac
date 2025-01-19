@@ -2,6 +2,8 @@
 
 Simple game to practice kotlin skills
 
+![img.png](img.png)
+
 ### Build
 ```shell
 ./gradlew build
