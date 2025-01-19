@@ -30,7 +30,7 @@ class Game {
             println("Player (${turn.lowercaseChar()}) turn: ")
             val coord = readln().toInt()
 
-            if (isPlayValid(coord)) {
+            if (isValidPlay(coord)) {
                 plays[coord] = turn
                 turn = if (turn == 'X') 'O' else 'X'
                 checkWinner()
@@ -40,7 +40,7 @@ class Game {
         }
     }
 
-    private fun isPlayValid(coord: Int) = coord in 1..9
+    private fun isValidPlay(coord: Int) = plays[coord] == null && coord in 1..9
 
     private fun checkWinner() {
         // Check rows
