@@ -11,12 +11,12 @@ class Game {
         7 to Pair(2,0), 8 to Pair(2,1), 9 to Pair(2,2)
     )
 
-    fun draw() {
+    fun draw(noStyle: Boolean? = false) {
         for (coord in board) {
             val cell = if (plays.containsKey(coord.key)) {
                 "${plays[coord.key]}"
             } else {
-                "${AnsiColor.DARK_GRAY.code}${coord.key}${AnsiColor.RESET.code}"
+                if (noStyle == true) coord.key else "${AnsiColor.DARK_GRAY.code}${coord.key}${AnsiColor.RESET.code}"
             }
             print("""
                 [$cell]
@@ -27,7 +27,7 @@ class Game {
 
     fun play() {
         while (true) {
-            println("Player (${turn.lowercaseChar()}) turn: ")
+            println("Player (${turn.lowercaseChar()}) turn:")
             val coord = readln().toInt()
 
             if (isValidPlay(coord)) {
